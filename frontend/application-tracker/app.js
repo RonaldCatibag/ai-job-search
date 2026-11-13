@@ -34,7 +34,7 @@ async function loadEmail(){
   const pending=d.items.filter(x=>x.can_apply).length;
   $("#email-nav-count").textContent=pending||d.items.length;
   $("#email-sync-status").textContent=d.last_checked?"Gmail snapshot - checked "+d.last_checked:"No Gmail snapshot yet";
-  $("#email-sync-note").textContent="Gmail is connected through Codex. This local dashboard shows the last synced evidence; it does not poll Gmail on its own. Refresh snapshot reloads saved evidence.";
+  $("#email-sync-note").textContent="Email signals show the last saved mailbox evidence. This dashboard does not poll Gmail automatically. Refresh snapshot reloads saved evidence.";
   $("#email-stats").replaceChildren(stat("STATUS SUGGESTIONS",pending,"Awaiting your approval","+",true),stat("DELIVERY ISSUES",d.items.filter(x=>x.signal==="delivery_failed").length,"Sent is not always delivered","!"),stat("FULL MESSAGES READ",d.full_messages_read||0,"Classified from full message content","@"),stat("AUTOMATIC WRITES","0","No silent application changes","0"));
   const list=$("#email-list");list.replaceChildren();
   for(const item of d.items){

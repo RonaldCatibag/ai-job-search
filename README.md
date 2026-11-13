@@ -7,8 +7,6 @@
 <p align="center">
   <a href="https://github.com/ai-job-search-dev/ai-job-search/actions/workflows/ci.yml"><img src="https://github.com/ai-job-search-dev/ai-job-search/actions/workflows/ci.yml/badge.svg" alt="CI" height="20"></a>
   &nbsp;
-  <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/built_on-Claude_Code-2A9D8F?style=flat" alt="Built on Claude Code" height="20"></a>
-  &nbsp;
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-2A9D8F?style=flat" alt="MIT license" height="20"></a>
 </p>
 
@@ -17,8 +15,8 @@
 </p>
 
 <p align="center">
-  An AI-powered job application framework built on <a href="https://claude.com/claude-code">Claude Code</a>.<br>
-  Fork it, fill in your profile, and let Claude evaluate job postings, tailor your CV,<br>
+  A local workspace for job discovery, application review and tracking.<br>
+  Fill in your profile to evaluate job postings, tailor your CV,<br>
   write cover letters, and prepare you for interviews.
 </p>
 
@@ -445,7 +443,6 @@ Thinking about a PR? Read [CONTRIBUTING.md](CONTRIBUTING.md) first - it explains
 ## Acknowledgements
 
 - [Mikkel Krogholm](https://github.com/mikkelkrogsholm) ([skills repo](https://github.com/mikkelkrogsholm/skills)) for the job search CLI skills
-- Built with [Claude Code](https://claude.com/claude-code) by [Anthropic](https://anthropic.com)
 
 ## License
 
