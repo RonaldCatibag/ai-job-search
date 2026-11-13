@@ -1,0 +1,19 @@
+[Unit]
+ConditionPathExists=!%h/local-ai/projects/ai-job-search/dashboard/environment-stopped.json
+Description=Roleflow independent local job discovery worker
+
+[Service]
+Type=simple
+WorkingDirectory=%h/ai-job-search
+ExecStart=/usr/bin/python3 -u %h/local-ai/scripts/job_discovery_agent.py --interval-seconds 3600
+Restart=on-failure
+RestartSec=15
+MemoryMax=1G
+MemorySwapMax=128M
+OOMPolicy=kill
+Nice=10
+StandardOutput=append:%h/local-ai/logs/discovery-agent.log
+StandardError=append:%h/local-ai/logs/discovery-agent.log
+
+[Install]
+WantedBy=default.target

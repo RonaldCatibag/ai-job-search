@@ -1,0 +1,19 @@
+[Unit]
+ConditionPathExists=!%h/local-ai/projects/ai-job-search/dashboard/environment-stopped.json
+Description=Roleflow application controller with isolated memory
+
+[Service]
+Type=simple
+WorkingDirectory=%h/ai-job-search
+Restart=on-failure
+RestartSec=5
+OOMPolicy=kill
+MemoryAccounting=yes
+MemoryMax=1536M
+MemorySwapMax=256M
+ExecStart=/usr/bin/python3 -u %h/ai-job-search/tools/application_tracker.py
+StandardOutput=append:%h/local-ai/projects/ai-job-search/dashboard/server.log
+StandardError=append:%h/local-ai/projects/ai-job-search/dashboard/server.log
+
+[Install]
+WantedBy=default.target

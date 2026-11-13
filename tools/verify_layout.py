@@ -276,6 +276,11 @@ def parse_pdf(path: Path) -> list[Page]:
             for words in buckets.values()
         ]
         pages.append(Page(float(h), lines))
+    if not pages:
+        raise RuntimeError(
+            f"pdftotext produced no page elements for {path}; "
+            "layout could not be verified from the bounding-box output"
+        )
     return pages
 
 

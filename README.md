@@ -1,3 +1,5 @@
+> Local Roleflow additions and private configuration setup: [ROLEFLOW.md](ROLEFLOW.md).
+
 <p align="center">
   <img src="assets/readme/hero.svg" alt="AI Job Search. Pip the courier bird carries an application along a flight path to its destination. The job search that runs on your machine." width="100%">
 </p>

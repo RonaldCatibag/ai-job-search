@@ -119,3 +119,48 @@ company_research/*.json
 
 # Brainstorm mockups (superpowers visual companion) - never ship
 .superpowers/
+
+# Roleflow: private local configuration and generated application materials.
+# Matching files already tracked are removed from the index during migration;
+# safe upstream templates live in templates/local-profile/ instead.
+/CLAUDE.md
+/.claude/skills/job-application-assistant/01-candidate-profile.md
+/.claude/skills/job-application-assistant/04-job-evaluation.md
+/.claude/skills/job-scraper/search-queries.md
+/templates/application-answer-bank.md
+/cv/*resume*.json
+/.agents/skills/apply-to-each-job/
+/.claude/commands/apply-batch.md
+
+# Runtime state, conversation caches, receipts and generated exports.
+/output/
+/tmp/
+/logs/
+/cache/
+/.aider.tags.cache*/
+/.aider*history*
+/.application-tracker.lock
+*.sqlite
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.db
+*.pid
+storage_state*.json
+browser-state*.json
+verification-code*
+
+# Credentials and model/runtime downloads are never source backups.
+credentials*.json
+client_secret*.json
+gcp-oauth.keys.json
+token.json
+tokens.json
+hosts.yml
+*.pem
+*.key
+**/.gmail-mcp/
+**/.config/gh/
+**/models/
+**/aider-env/
+**/runtime/ollama/

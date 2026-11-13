@@ -379,3 +379,11 @@ The section order varies by role type:
 4. Professional Experience (reverse chronological)
 5. Publications & Awards
 6. References
+
+## ACTIVE-TEMPLATE: Diether-style resume (user selected 2026-11-09)
+- Applies to Ronald's new SRE, DevOps and Platform Engineering resume versions; supersedes the stock moderncv appearance for these outputs.
+- US Letter, two pages, Calibri, centered name/contact header, navy section rules, compact labelled bullets. Layout reference only; no third-party identity or experience is copied.
+- Editable content: `cv/ronald_resume_2026-11-09.json`. Builder: `tools/build_resume_pdf.py`. Compile: `~/local-ai/aider-env/bin/python tools/build_resume_pdf.py`.
+- Dependencies: ReportLab and PyMuPDF in local aider-env; Windows Calibri fonts. Outputs: `output/pdf/`; previews: `tmp/pdfs/resume-preview/`.
+- Require exactly two pages, clean text extraction/contact details, no clipping or orphaned headings, and rendered visual review. Markdown copies accompany PDFs.
+- AI experience must use confirmed tools and responsibilities; do not add unconfirmed Claude Code use or quantified outcomes to satisfy generic wording guidance.
