@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 ROOT=Path(__file__).resolve().parents[1]
+CONFIRMATION=re.compile(r'(application\s+(?:(?:has\s+been|was)\s+)?(?:successfully\s+)?(?:received|submitted)|thank you for applying|thanks for applying)',re.I)
 
 def validate_plan(plan):
     u=urlsplit(plan['url']);parts=u.path.strip('/').split('/')
@@ -102,7 +103,7 @@ def main(argv=None):
                     page.screenshot(path=str(run/'filled-form.png'),full_page=True)
                     result['submission_request_sent']=True
                     page.get_by_role('button',name='Submit Application',exact=True).click()
-                    confirmation=page.get_by_text(re.compile(r'(application (has been |was )?(received|submitted)|thank you for applying|thanks for applying)',re.I)).first
+                    confirmation=page.get_by_text(CONFIRMATION).first
                     if interactive:
                         request_file=run/'human-verification-request.json'
                         deadline=time.monotonic()+1800

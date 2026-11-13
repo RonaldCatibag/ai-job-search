@@ -1,5 +1,5 @@
 import unittest
-from tools.ashby_application_runner import validate_schema,validate_plan
+from tools.ashby_application_runner import CONFIRMATION,validate_schema,validate_plan
 
 class AshbyPlanTests(unittest.TestCase):
  def setUp(self):
@@ -18,5 +18,10 @@ class AshbyPlanTests(unittest.TestCase):
  def test_job_identity_mismatch_is_rejected(self):
   with self.assertRaisesRegex(ValueError,'Unapproved'):
    validate_plan({'adapter':'ashby-selected','url':'https://jobs.ashbyhq.com/acme/00000000-0000-0000-0000-000000000000','job_id':'11111111-1111-1111-1111-111111111111'})
+ def test_xero_success_screen_and_existing_receipts_are_recognized(self):
+  for message in ['Thank you - Your application was successfully submitted.','Your application has been received','Thanks for applying!']:
+   with self.subTest(message=message):self.assertIsNotNone(CONFIRMATION.search(message))
+ def test_instruction_to_apply_is_not_a_receipt(self):
+  self.assertIsNone(CONFIRMATION.search('Review your application and click Submit Application.'))
 
 if __name__=='__main__':unittest.main()
