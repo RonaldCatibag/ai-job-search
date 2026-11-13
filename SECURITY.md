@@ -1,5 +1,13 @@
 # Security Policy
 
+## Roleflow local runtime
+
+The Roleflow dashboard and Ollama are configured for loopback access on the workstation. The dashboard has no multi-user login or per-user access controls and is not intended to be exposed as a public web service. A public source repository does not provide access to the owner's running dashboard or mailbox.
+
+Personal profiles, resume source and exports, application plans, tracker data, browser state, credentials and runtime logs are excluded from version control. Some adapters and defaults remain specific to the owner's local configuration; review them before running your own applications. A clean repository is not an independent security audit of every component.
+
+The framework policy below describes the inherited components. For Roleflow-specific findings, contact the repository owner privately before disclosing sensitive application data or a working exploit in a public issue.
+
 ## Reporting a vulnerability
 
 Please report security findings privately via **[GitHub private vulnerability reporting](https://github.com/ai-job-search-dev/ai-job-search/security/advisories/new)** rather than a public issue. You will get a response within a few days, credit in the fix unless you prefer otherwise, and public disclosure coordinated with the patch.

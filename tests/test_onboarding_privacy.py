@@ -47,10 +47,13 @@ class TestForkWarningsAtTheDecisionPoint(unittest.TestCase):
             f"{where}'s fork section must point at SETUP.md section 8's private-remote recipe",
         )
 
-    def test_readme_quick_start_warns_next_to_the_fork_command(self):
-        body = section(README.read_text(encoding="utf-8"), "### 1. Fork and clone")
-        self.assertIn("gh repo fork", body, "sanity: the fork command lives in this section")
-        self.assert_warns(body, "README")
+    def test_readme_local_setup_keeps_personal_configuration_local(self):
+        body = section(README.read_text(encoding="utf-8"), "## Local setup")
+        self.assertIn("git clone", body)
+        self.assertIn("python3 tools/init_local_profile.py", body)
+        self.assertIn("preserves existing files", body)
+        self.assertIn("credentials", body)
+        self.assertIn("excluded from version control", body)
 
     def test_setup_guide_warns_next_to_the_fork_command(self):
         body = section(SETUP_GUIDE.read_text(encoding="utf-8"), "## 2. Fork and clone")

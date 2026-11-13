@@ -48,7 +48,13 @@ def build(data,key,out):
  c.setFillColor(NAVY);c.setFont("CV-Bold",22);c.drawCentredString(W/2,r.y-18,data['name']);r.y-=40
  c.setFillColor(BLUE);c.setFont("CV-Bold",11);c.drawCentredString(W/2,r.y,v['headline']);r.y-=18
  c.setFillColor(INK);c.setFont("CV",9);c.drawCentredString(W/2,r.y,data['phone']+"  |  "+data['email']+"  |  "+data['location']);r.y-=14
- c.setFillColor(BLUE);c.drawCentredString(W/2,r.y,data['linkedin']);c.linkURL("https://"+data['linkedin'],(195,r.y-2,418,r.y+9),relative=0);r.y-=6
+ links=[data['linkedin']]
+ if data.get('github'):links.append(data['github'].removeprefix('https://').removeprefix('http://'))
+ line='  |  '.join(links);x=(W-pdfmetrics.stringWidth(line,'CV',9))/2
+ c.setFillColor(BLUE);c.drawCentredString(W/2,r.y,line)
+ for link in links:
+  width=pdfmetrics.stringWidth(link,'CV',9);c.linkURL('https://'+link,(x,r.y-2,x+width,r.y+9),relative=0);x+=width+pdfmetrics.stringWidth('  |  ','CV',9)
+ r.y-=6
  r.section("Professional Summary");r.paragraph(escape(v['summary']),size=10,leading=13,gap=2)
  r.section("Technical Skills")
  skills=list(data['skills'])
@@ -78,7 +84,7 @@ def build(data,key,out):
   for word in page.get_text('words'):assert word[0]>=40 and word[2]<=W-39 and word[1]>=35 and word[3]<=H-35,(path,word)
  preview=ROOT/'tmp/pdfs/resume-preview'/key;preview.mkdir(parents=True,exist_ok=True)
  for i,page in enumerate(doc):page.get_pixmap(matrix=pymupdf.Matrix(1.3,1.3)).save(str(preview/f'page-{i+1}.png'))
- md=['# '+data['name'],v['headline'],data['phone']+' | '+data['email']+' | '+data['location'],data['linkedin'],'','## Professional Summary',v['summary'],'','## Technical Skills']
+ md=['# '+data['name'],v['headline'],data['phone']+' | '+data['email']+' | '+data['location'],' | '.join(links),'','## Professional Summary',v['summary'],'','## Technical Skills']
  md += ['- **'+label+':** '+body for label,body in skills]
  md += ['','## Professional Experience']
  for job in [data['current']]+data['previous']:

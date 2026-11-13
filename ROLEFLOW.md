@@ -1,6 +1,6 @@
 # Roleflow local application workspace
 
-This private repository preserves the upstream AI Job Search framework and adds a local dashboard, persistent application controller, ATS form runners, local Ollama review workers and job discovery.
+This repository preserves the upstream AI Job Search framework and adds a local dashboard, persistent application controller, ATS form runners, local Ollama review workers and job discovery.
 
 The upstream framework and its license remain in this repository. Personal profiles, resumes, application answers, tracker rows, browser state, mail credentials, model downloads and logs stay on the local machine.
 
